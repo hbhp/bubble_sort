@@ -8,3 +8,17 @@
 #
 # Count how many swaps made in each iteration
 # If no swaps made, end method
+
+def bubble_sort(original_array)
+  working_array = []
+  count = 0
+  original_array.each_cons(2) do |first, second|            #Loop which completes one pass through
+      if first > second && count <= original_array.length
+        working_array << second
+        working_array << first
+        count += 1
+      end
+  end
+end
+
+bubble_sort([4,3,78,2,0,2])
