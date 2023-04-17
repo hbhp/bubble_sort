@@ -10,15 +10,21 @@
 # If no swaps made, end method
 
 def bubble_sort(original_array)
-  working_array = []
+  temp_array = []
   count = 0
+  first_value_position = 0
+  second_value_position = 0
   original_array.each_cons(2) do |first, second|            #Loop which completes one pass through
-      if first > second && count <= original_array.length
-        working_array << second
-        working_array << first
-        count += 1
+      if first > second                                     # && count <= original_array.length
+        first_value_position = original_array.find_index(first)
+        second_value_position = original_array.find_index(second)
+        temp_array << first
+        original_array.delete_at(first_value_position)
+        original_array = original_array.insert(second, original_array.delete_at(second_value_position))
+        p original_array
+                                                            # count += 1
       end
   end
 end
 
-bubble_sort([4,3,78,2,0,2])
+bubble_sort([4,3])
